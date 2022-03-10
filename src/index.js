@@ -5,7 +5,7 @@
    * @description Generates and updates a cookie in the browser, tracking various details at each page load.
    * @author Ash Durham
    */
-  this.CDE_TrkData = function() {
+  this.TrkData = function() {
       
       /**
        * Define globals 
@@ -138,7 +138,7 @@
       
       console.log(this.cookieDataPoints);
       
-      console.log('scumpt');
+      console.log('lurp');
       
       
       /* 
@@ -576,4 +576,4 @@
 
 }());
 
-var CDE_TrkData = new CDE_TrkData();
+var CDE_TrkData = new TrkData();
