@@ -12,7 +12,10 @@ This project uses [Parcel](https://parceljs.org/getting-started/webapp/) to prov
 - `npm install`
 - `npm run start`
 - Your project will be running on http://localhost:1234/
-## Hidden Fields
+
+<br />
+
+## Cookie Data
 
 ### Brands
 
