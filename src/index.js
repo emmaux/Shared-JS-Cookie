@@ -138,6 +138,8 @@
       
       console.log(this.cookieDataPoints);
       
+      console.log('scumpt');
+      
       
       /* 
        * Query String
