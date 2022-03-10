@@ -2,7 +2,7 @@ var brand = 'CM';
 
 (function () {
 	/**
-	 * @function CDE_TrkData
+	 * @function CMG_TrkData
 	 * @class
 	 * @description Generates and updates a cookie in the browser, tracking various details at each page load.
 	 * @author Ash Durham
@@ -28,7 +28,7 @@ var brand = 'CM';
 		 * Name of cookie
 		 * @member {string}
 		 */
-		this.cookieName = '_cdeTrkData';
+		this.cookieName = '_cmgTrkData';
 
 		/**
 		 * Expiry (in days) of cookie
@@ -660,4 +660,4 @@ var brand = 'CM';
 	};
 })();
 
-var CDE_TrkData = new TrkData();
+var CMG_TrkData = new TrkData();
