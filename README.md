@@ -2,7 +2,7 @@
 
 ## Description
 
-This cookie is used by all CM Group brands for brand-specific tracking and attribution using UTM params and other data points to pass along with leads.
+This cookie is loaded by all CM Group marketing sites for brand-specific tracking and attribution using UTM params and other data points to pass along with leads.
 
 <br />
 
@@ -12,6 +12,12 @@ This project uses [Parcel](https://parceljs.org/getting-started/webapp/) to prov
 - `npm install`
 - `npm run start`
 - Your project will be running on http://localhost:1234/
+
+<br />
+
+## In production
+
+Coming soon
 
 <br />
 

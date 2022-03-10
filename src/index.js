@@ -1,3 +1,5 @@
+var brand = 'CM';
+
 (function() {
   /**
    * @function CDE_TrkData
@@ -62,18 +64,6 @@
        */
       
       /**
-       * @function DPfirstVisit
-       * @description Defines the date of the users first visit to the website. If the value already exists, function returns the existing value.
-       * @return {string} GMT Date string of the date and time the user first visits the website
-       */
-      this.DPfirstVisit = function() {
-          if (!this.cookieData.hasOwnProperty('firstVisit')) {
-              var firstVisit = new Date;
-              return firstVisit.toGMTString();
-          } else return this.cookieData.firstVisit;
-      };
-      
-      /**
        * @function DPreferrerURL
        * @description Defines the referrer URL of the users first visit to the website. If the value already exists, function returns the existing value.
        * @return {url} URL of the referring webpage
@@ -136,9 +126,7 @@
           return signupVar.replace(/[^a-z0-9]/gi,'');
       };
       
-      console.log(this.cookieDataPoints);
-      
-      console.log('lurp');
+      console.log(this.cookieData);
       
       
       /* 
@@ -554,12 +542,11 @@
           if (cookieData) {
               cookieData = unescape(cookieData).split('|');
               this.cookieData.referrerURL = cookieData[0];
-              this.cookieData.firstVisit = cookieData[1];
-              this.cookieData.landingURL = cookieData[2];
-              this.cookieData.signupVar = cookieData[3];
-              this.cookieData.lastReferrerURL = cookieData[4];
-              this.cookieData.lastLandingURL = cookieData[5];
-              this.setCookie(cookieData[6], 'CM-currency', false);
+              this.cookieData.landingURL = cookieData[1];
+              this.cookieData.signupVar = cookieData[2];
+              this.cookieData.lastReferrerURL = cookieData[3];
+              this.cookieData.lastLandingURL = cookieData[4];
+              this.setCookie(cookieData[5], 'CM-currency', false);
               this.deleteCookie("CM-Ref");
           }
       };
