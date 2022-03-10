@@ -1,4 +1,6 @@
 (function() {
+  // TODO Debug
+  console.log('hello world');
   /**
    * @function CDE_TrkData
    * @class
@@ -54,10 +56,6 @@
        * @member {Object}
        */
       this.cookieData = {};
-      
-
-      // TODO Debug
-      console.log('hello world');
       
       
       
