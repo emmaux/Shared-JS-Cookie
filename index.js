@@ -55,6 +55,9 @@
        */
       this.cookieData = {};
       
+
+      // TODO Debug
+      console.log('hello world');
       
       
       
