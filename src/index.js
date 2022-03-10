@@ -17,10 +17,10 @@ var brand = 'CM';
 		 * @member {Array}
 		 */
 		this.cookieDataPoints = [
-			'referrerURL',
-			'lastReferrerURL',
-			'landingURL',
-			'lastLandingURL',
+			'referralURL',
+			'lastReferralURL',
+			'landingPageURL',
+			'lastLandingPageURL',
 			'signupVar',
 		];
 
@@ -59,58 +59,58 @@ var brand = 'CM';
 		 */
 
 		/**
-		 * @function DPreferrerURL
+		 * @function DPreferralURL
 		 * @description Defines the referrer URL of the users first visit to the website. If the value already exists, function returns the existing value.
 		 * @return {url} URL of the referring webpage
 		 */
-		this.DPreferrerURL = function () {
-			if (!this.cookieData.hasOwnProperty('referrerURL'))
+		this.DPreferralURL = function () {
+			if (!this.cookieData.hasOwnProperty('referralURL'))
 				return document.referrer;
-			else return this.cookieData.referrerURL;
+			else return this.cookieData.referralURL;
 		};
 
 		/**
-		 * @function DPlastReferrerURL
+		 * @function DPlastReferralURL
 		 * @description Defines the last external referrer URL of the users return visit to the website. If the value already exists and no external referrer is present, function returns the existing value.
 		 * @return {url} URL of the referring webpage
 		 */
-		this.DPlastReferrerURL = function () {
+		this.DPlastReferralURL = function () {
 			if (
 				document.referrer &&
 				document.referrer.indexOf(location.protocol + '//' + location.host) ===
 					-1
 			)
 				return document.referrer;
-			else if (!this.cookieData.hasOwnProperty('lastReferrerURL'))
+			else if (!this.cookieData.hasOwnProperty('lastReferralURL'))
 				return document.referrer;
-			else return this.cookieData.lastReferrerURL;
+			else return this.cookieData.lastReferralURL;
 		};
 
 		/**
-		 * @function DPlandingURL
+		 * @function DPlandingPageURL
 		 * @description Defines the entry page the user came to for the first time seeing the website. If the value already exists, function returns the existing value.
 		 * @return {url} URL of the landing webpage
 		 */
-		this.DPlandingURL = function () {
-			if (!this.cookieData.hasOwnProperty('landingURL')) return location.href;
-			else return this.cookieData.landingURL;
+		this.DPlandingPageURL = function () {
+			if (!this.cookieData.hasOwnProperty('landingPageURL')) return location.href;
+			else return this.cookieData.landingPageURL;
 		};
 
 		/**
-		 * @function DPlastLandingURL
+		 * @function DPlastLandingPageURL
 		 * @description Defines the entry page the user came to for a return visit to the website from an external source. If the value already exists and no external referrer is present, function returns the existing value.
 		 * @return {url} URL of the landing webpage
 		 */
-		this.DPlastLandingURL = function () {
+		this.DPlastLandingPageURL = function () {
 			if (
 				document.referrer &&
 				document.referrer.indexOf(location.protocol + '//' + location.host) ===
 					-1
 			)
 				return location.href;
-			else if (!this.cookieData.hasOwnProperty('lastLandingURL'))
+			else if (!this.cookieData.hasOwnProperty('lastLandingPageURL'))
 				return location.href;
-			else return this.cookieData.lastLandingURL;
+			else return this.cookieData.lastLandingPageURL;
 		};
 
 		/**
@@ -510,55 +510,55 @@ var brand = 'CM';
 						}
 					}
 
-					// referrerURL
+					// referralURL
 					var ref_urls = document.getElementsByName('Referral_URL__c');
 					for (var i = 0; i < ref_urls.length; i++) {
 						if (ref_urls[i] !== null)
-							ref_urls[i].value = encodeURIComponent(CDE_data.referrerURL);
+							ref_urls[i].value = encodeURIComponent(CDE_data.referralURL);
 					}
 
-					// landingURL
+					// landingPageURL
 					var lp_urls = document.getElementsByName('Landing_Page_URL__c');
 					for (var i = 0; i < lp_urls.length; i++) {
 						if (lp_urls[i] !== null)
-							lp_urls[i].value = encodeURIComponent(CDE_data.landingURL);
+							lp_urls[i].value = encodeURIComponent(CDE_data.landingPageURL);
 					}
 
-					// lastReferrerURL
+					// lastReferralURL
 					var last_ref_urls = document.getElementsByName(
 						'Last_Referral_URL__c'
 					);
 					for (var i = 0; i < last_ref_urls.length; i++) {
 						if (last_ref_urls[i] !== null)
 							last_ref_urls[i].value = encodeURIComponent(
-								CDE_data.lastReferrerURL
+								CDE_data.lastReferralURL
 							);
 					}
 
-					// lastLandingURL
+					// lastLandingPageURL
 					var last_lp_urls = document.getElementsByName(
 						'Last_Landing_Page_URL__c'
 					);
 					for (var i = 0; i < last_lp_urls.length; i++) {
 						if (last_lp_urls[i] !== null)
 							last_lp_urls[i].value = encodeURIComponent(
-								CDE_data.lastLandingURL
+								CDE_data.lastLandingPageURL
 							);
 					}
 
-					// lastLandingURL
+					// lastLandingPageURL
 					var last_lpc_urls = document.getElementsByName(
 						'Last_Landing_Page_URL_Contact__c'
 					);
 					for (var i = 0; i < last_lpc_urls.length; i++) {
 						if (last_lpc_urls[i] != null)
 							last_lpc_urls[i].value = encodeURIComponent(
-								CDE_data.lastLandingURL
+								CDE_data.lastLandingPageURL
 							);
 					}
 
 					// Parse out UTM vars from Landing URL and populate
-					var cmLandingUTMs = $this.getUTMParams(CDE_data.landingURL);
+					var cmLandingUTMs = $this.getUTMParams(CDE_data.landingPageURL);
 					for (var param in cmLandingUTMs) {
 						var raw = param.replace('utm_', '');
 						var field_name = '';
@@ -573,7 +573,7 @@ var brand = 'CM';
 					}
 
 					// Parse out UTM vars from Last Landing URL and populate
-					var cmLastLandingUTMs = $this.getUTMParams(CDE_data.lastLandingURL);
+					var cmLastLandingUTMs = $this.getUTMParams(CDE_data.lastLandingPageURL);
 					for (var param in cmLastLandingUTMs) {
 						var raw = param.replace('utm_', '');
 						var field_name = '';
@@ -588,9 +588,9 @@ var brand = 'CM';
 					}
 
 					// Parse out Marin KW ID var from URLs and populate
-					var cmLandingMarin = $this.getMarinParams(CDE_data.landingURL);
+					var cmLandingMarin = $this.getMarinParams(CDE_data.landingPageURL);
 					var cmLastLandingMarin = $this.getMarinParams(
-						CDE_data.lastLandingURL
+						CDE_data.lastLandingPageURL
 					);
 					var marin_kwid = document.getElementsByName('Marin_KWID__c');
 					var mkwid = cmLandingMarin || cmLastLandingMarin || null;
@@ -640,12 +640,12 @@ var brand = 'CM';
 			var cookieData = this.getCookie('CM-Ref');
 			if (cookieData) {
 				cookieData = unescape(cookieData).split('|');
-				this.cookieData.referrerURL = cookieData[0];
+				this.cookieData.referralURL = cookieData[0];
 				this.cookieData.firstVisit = cookieData[1];
-				this.cookieData.landingURL = cookieData[2];
+				this.cookieData.landingPageURL = cookieData[2];
 				this.cookieData.signupVar = cookieData[3];
-				this.cookieData.lastReferrerURL = cookieData[4];
-				this.cookieData.lastLandingURL = cookieData[5];
+				this.cookieData.lastReferralURL = cookieData[4];
+				this.cookieData.lastLandingPageURL = cookieData[5];
 				this.setCookie(cookieData[6], 'CM-currency', false);
 				this.deleteCookie('CM-Ref');
 			}
