@@ -24,6 +24,8 @@
           'lastViewedURL',
           'signupVar'
       ];
+
+      console.log(this.cookieDataPoints);
       
       /** 
        * Name of cookie
