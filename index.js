@@ -24,8 +24,6 @@
           'lastViewedURL',
           'signupVar'
       ];
-
-      console.log(this.cookieDataPoints);
       
       /** 
        * Name of cookie
@@ -138,7 +136,7 @@
           return signupVar.replace(/[^a-z0-9]/gi,'');
       };
       
-      
+      console.log(this.cookieDataPoints);
       
       
       /* 
