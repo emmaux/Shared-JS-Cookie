@@ -1,19 +1,26 @@
-var brand = 'CM';
+const brand = 'CM';
 
 (function () {
 	/**
 	 * @function CMG_TrkData
 	 * @class
 	 * @description Generates and updates a cookie in the browser, tracking various details at each page load.
-	 * @author Ash Durham
+	 * @author CMG Dev Team
 	 */
-	this.TrkData = function () {
+	this.TrkData = function (brand) {
 		/**
 		 * Define globals
 		 */
 
+    /**
+		 * TODO brands array to validate brand
+		 */
+    console.log(brand);
+
 		/**
-		 * List of Data Points. A defining function, prepended with "DP" should also reside in this class. formFill() function should also be updated to autofill Marketo fields.
+		 * List of Data Points 
+     * A corresponding defining function, prepended with "DP" should also reside in this class
+     * formFill() function should also be updated to autofill Marketo fields.
 		 * @member {Array}
 		 */
 		this.cookieDataPoints = [
@@ -46,7 +53,7 @@ var brand = 'CM';
 		 * Path of cookie
 		 * @member {string}
 		 */
-		this.cookiePath = escape('/');
+		this.cookiePath = '/';
 
 		/**
 		 * Data to be housed in cookie
@@ -126,8 +133,6 @@ var brand = 'CM';
 			return signupVar.replace(/[^a-z0-9]/gi, '');
 		};
 
-		console.log(this.cookieData);
-
 		/*
 		 * Query String
 		 */
@@ -152,6 +157,7 @@ var brand = 'CM';
 					vars[key] = value;
 				}
 			);
+      console.log(vars);
 			return vars;
 		};
 
@@ -502,7 +508,7 @@ var brand = 'CM';
 			} else {
 				MktoForms2.onFormRender(function () {
 					// signupVar
-					var signvarElements = document.getElementsByName('SV_Value__c');
+					var signvarElements = document.getElementsByName('SV_Value');
 					for (var i = 0; i < signvarElements.length; i++) {
 						if (signvarElements[i] && !signvarElements[i].value) {
 							// don't populate an already populated signupVar form value
@@ -660,4 +666,4 @@ var brand = 'CM';
 	};
 })();
 
-var CMG_TrkData = new TrkData();
+var CMG_TrkData = new TrkData(brand);
