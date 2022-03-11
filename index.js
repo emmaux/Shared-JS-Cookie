@@ -1,3 +1,4 @@
+const brand = 'CM';
 (function () {
 	/**
 	 * @function CMG_TrkData
@@ -151,7 +152,8 @@
 					vars[key] = value;
 				}
 			);
-			console.log(vars);
+      // ! Debug
+			// console.log('UTM Vars:', vars);
 			return vars;
 		};
 
@@ -494,9 +496,10 @@
 		 * @description If Marketo form fields are present, look for expected hidden fields and automatically populate them
 		 */
 		this.mktoFormFill = function () {
-			// var CDE_data = this.getCookie();
 			var CDE_data = this.getCookie();
 			var $this = this;
+      // ! Debug
+      // console.log('Cookie Data:', this.cookieData);
 
 			if (typeof MktoForms2 === 'undefined') {
 				return false;
@@ -512,23 +515,21 @@
 					}
 
 					// referralURL
-					var ref_urls = document.getElementsByName('Referral_URL__c');
+					var ref_urls = document.getElementsByName(`Referral_URL_${brand}__c`);
 					for (var i = 0; i < ref_urls.length; i++) {
 						if (ref_urls[i] !== null)
 							ref_urls[i].value = encodeURIComponent(CDE_data.referralURL);
 					}
 
 					// landingPageURL
-					var lp_urls = document.getElementsByName('LandingPageURL');
+					var lp_urls = document.getElementsByName(`Landing_Page_URL_${brand}__c`);
 					for (var i = 0; i < lp_urls.length; i++) {
 						if (lp_urls[i] !== null)
 							lp_urls[i].value = encodeURIComponent(CDE_data.landingPageURL);
 					}
 
 					// lastReferralURL
-					var last_ref_urls = document.getElementsByName(
-						'Last_Referral_URL__c'
-					);
+					var last_ref_urls = document.getElementsByName(`Last_Referral_URL_${brand}__c`);
 					for (var i = 0; i < last_ref_urls.length; i++) {
 						if (last_ref_urls[i] !== null)
 							last_ref_urls[i].value = encodeURIComponent(
@@ -537,7 +538,7 @@
 					}
 
 					// lastLandingPageURL
-					var last_lp_urls = document.getElementsByName('lastLandingPageURL');
+					var last_lp_urls = document.getElementsByName(`Last_Landing_Page_URL_${brand}__c`);
 					for (var i = 0; i < last_lp_urls.length; i++) {
 						if (last_lp_urls[i] !== null)
 							last_lp_urls[i].value = encodeURIComponent(
@@ -550,9 +551,7 @@
 					for (var param in cmLandingUTMs) {
 						var raw = param.replace('utm_', '');
 						var field_name = '';
-						if (raw !== 'gclid') field_name = 'UTM_';
-						field_name += raw.charAt(0).toUpperCase() + raw.slice(1) + '__c';
-						field_name = field_name.replace('Campaign_id', 'Campaign_Id');
+						field_name += raw;
 						var fields = document.getElementsByName(field_name);
 						for (var i = 0; i < fields.length; i++) {
 							if (cmLandingUTMs.hasOwnProperty(param) && fields[i] !== null)
@@ -561,15 +560,12 @@
 					}
 
 					// Parse out UTM vars from Last Landing URL and populate
-					var cmLastLandingUTMs = $this.getUTMParams(
-						CDE_data.lastLandingPageURL
-					);
+					var cmLastLandingUTMs = $this.getUTMParams(CDE_data.lastLandingPageURL);
 					for (var param in cmLastLandingUTMs) {
 						var raw = param.replace('utm_', '');
 						var field_name = '';
-						if (raw !== 'gclid') field_name = 'Last_UTM_';
-						field_name += raw.charAt(0).toUpperCase() + raw.slice(1) + '__c';
-						field_name = field_name.replace('Campaign_id', 'Campaign_Id');
+						if (raw !== 'gclid') field_name = 'last';
+						field_name += raw.charAt(0).toUpperCase() + raw.slice(1);
 						var fields = document.getElementsByName(field_name);
 						for (var i = 0; i < fields.length; i++) {
 							if (cmLastLandingUTMs.hasOwnProperty(param) && fields[i] !== null)
