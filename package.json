@@ -2,11 +2,10 @@
 	"name": "shared-js-cookie",
 	"version": "1.0.0",
 	"description": "A tracking and attribution cookie for marketing sites",
-	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel src/index.js",
-    "build": "parcel build src/index.js"
+    "start": "npx parcel src/index.html",
+    "build": "parcel build src/index.html"
 	},
 	"repository": {
 		"type": "git",
