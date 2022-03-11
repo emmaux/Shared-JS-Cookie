@@ -1,4 +1,3 @@
-const brand = 'EM';
 (function () {
 	/**
 	 * @function CMG_TrkData
@@ -10,11 +9,6 @@ const brand = 'EM';
 		/**
 		 * Define globals
 		 */
-
-		/**
-		 * TODO brands array to validate brand
-		 */
-		console.log('Brand:', brand);
 
 		/**
 		 * List of Data Points

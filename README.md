@@ -6,21 +6,6 @@ This cookie is loaded by all CM Group marketing sites for brand-specific trackin
 
 <br />
 
-## Getting started
-
-This project uses [Parcel](https://parceljs.org/getting-started/webapp/) to provide a simple development server with hot reloading. To get up and running, navigate to the project root in terminal and run:
-- `npm install`
-- `npm run start`
-- Your project will be running on http://localhost:1234/
-
-<br />
-
-## In production
-
-Coming soon
-
-<br />
-
 ## Cookie Data
 
 ### Brands
