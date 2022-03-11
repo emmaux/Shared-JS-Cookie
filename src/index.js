@@ -14,7 +14,7 @@ const brand = 'EM';
 		/**
 		 * TODO brands array to validate brand
 		 */
-		console.log(brand);
+		console.log('Brand:', brand);
 
 		/**
 		 * List of Data Points
