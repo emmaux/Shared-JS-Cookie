@@ -495,8 +495,7 @@
 		 */
 		this.mktoFormFill = function () {
 			// var CDE_data = this.getCookie();
-			var CDE_data =
-				'eyJmaXJzdFZpc2l0IjoiV2VkLCAyNyBPY3QgMjAyMSAyMDowNTo1MCBHTVQiLCJyZWZlcnJlclVSTCI6IiIsImxhc3RSZWZlcnJlclVSTCI6Imh0dHBzOi8vYXBwLmFzYW5hLmNvbS8iLCJsYW5kaW5nVVJMIjoiaHR0cHM6Ly9teWVtbWEuY29tL2VtbWEtMTAxL2VtYWlsLWxpYnJhcnkiLCJsYXN0TGFuZGluZ1VSTCI6Imh0dHBzOi8vZGV2Lm15ZW1tYS5jb20vc2lnbi11cCIsImxhc3RWaWV3ZWRVUkwiOiJodHRwczovL215ZW1tYS5jb20vIiwic2lnbnVwVmFyIjoiaG9tZXBhZ2VuYXYifQ==';
+			var CDE_data = this.getCookie();
 			var $this = this;
 
 			if (typeof MktoForms2 === 'undefined') {
