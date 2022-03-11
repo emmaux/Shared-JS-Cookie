@@ -1,5 +1,4 @@
-const brand = 'CM';
-
+const brand = 'EM';
 (function () {
 	/**
 	 * @function CMG_TrkData
@@ -12,15 +11,15 @@ const brand = 'CM';
 		 * Define globals
 		 */
 
-    /**
+		/**
 		 * TODO brands array to validate brand
 		 */
-    console.log(brand);
+		console.log(brand);
 
 		/**
-		 * List of Data Points 
-     * A corresponding defining function, prepended with "DP" should also reside in this class
-     * formFill() function should also be updated to autofill Marketo fields.
+		 * List of Data Points
+		 * A corresponding defining function, prepended with "DP" should also reside in this class
+		 * formFill() function should also be updated to autofill Marketo fields.
 		 * @member {Array}
 		 */
 		this.cookieDataPoints = [
@@ -53,7 +52,7 @@ const brand = 'CM';
 		 * Path of cookie
 		 * @member {string}
 		 */
-		this.cookiePath = '/';
+		this.cookiePath = escape('/');
 
 		/**
 		 * Data to be housed in cookie
@@ -99,7 +98,8 @@ const brand = 'CM';
 		 * @return {url} URL of the landing webpage
 		 */
 		this.DPlandingPageURL = function () {
-			if (!this.cookieData.hasOwnProperty('landingPageURL')) return location.href;
+			if (!this.cookieData.hasOwnProperty('landingPageURL'))
+				return location.href;
 			else return this.cookieData.landingPageURL;
 		};
 
@@ -157,7 +157,7 @@ const brand = 'CM';
 					vars[key] = value;
 				}
 			);
-      console.log(vars);
+			console.log(vars);
 			return vars;
 		};
 
@@ -500,7 +500,9 @@ const brand = 'CM';
 		 * @description If Marketo form fields are present, look for expected hidden fields and automatically populate them
 		 */
 		this.mktoFormFill = function () {
-			var CDE_data = this.getCookie();
+			// var CDE_data = this.getCookie();
+			var CDE_data =
+				'eyJmaXJzdFZpc2l0IjoiV2VkLCAyNyBPY3QgMjAyMSAyMDowNTo1MCBHTVQiLCJyZWZlcnJlclVSTCI6IiIsImxhc3RSZWZlcnJlclVSTCI6Imh0dHBzOi8vYXBwLmFzYW5hLmNvbS8iLCJsYW5kaW5nVVJMIjoiaHR0cHM6Ly9teWVtbWEuY29tL2VtbWEtMTAxL2VtYWlsLWxpYnJhcnkiLCJsYXN0TGFuZGluZ1VSTCI6Imh0dHBzOi8vZGV2Lm15ZW1tYS5jb20vc2lnbi11cCIsImxhc3RWaWV3ZWRVUkwiOiJodHRwczovL215ZW1tYS5jb20vIiwic2lnbnVwVmFyIjoiaG9tZXBhZ2VuYXYifQ==';
 			var $this = this;
 
 			if (typeof MktoForms2 === 'undefined') {
@@ -524,7 +526,7 @@ const brand = 'CM';
 					}
 
 					// landingPageURL
-					var lp_urls = document.getElementsByName('Landing_Page_URL__c');
+					var lp_urls = document.getElementsByName('LandingPageURL');
 					for (var i = 0; i < lp_urls.length; i++) {
 						if (lp_urls[i] !== null)
 							lp_urls[i].value = encodeURIComponent(CDE_data.landingPageURL);
@@ -542,23 +544,10 @@ const brand = 'CM';
 					}
 
 					// lastLandingPageURL
-					var last_lp_urls = document.getElementsByName(
-						'Last_Landing_Page_URL__c'
-					);
+					var last_lp_urls = document.getElementsByName('lastLandingPageURL');
 					for (var i = 0; i < last_lp_urls.length; i++) {
 						if (last_lp_urls[i] !== null)
 							last_lp_urls[i].value = encodeURIComponent(
-								CDE_data.lastLandingPageURL
-							);
-					}
-
-					// lastLandingPageURL
-					var last_lpc_urls = document.getElementsByName(
-						'Last_Landing_Page_URL_Contact__c'
-					);
-					for (var i = 0; i < last_lpc_urls.length; i++) {
-						if (last_lpc_urls[i] != null)
-							last_lpc_urls[i].value = encodeURIComponent(
 								CDE_data.lastLandingPageURL
 							);
 					}
@@ -579,7 +568,9 @@ const brand = 'CM';
 					}
 
 					// Parse out UTM vars from Last Landing URL and populate
-					var cmLastLandingUTMs = $this.getUTMParams(CDE_data.lastLandingPageURL);
+					var cmLastLandingUTMs = $this.getUTMParams(
+						CDE_data.lastLandingPageURL
+					);
 					for (var param in cmLastLandingUTMs) {
 						var raw = param.replace('utm_', '');
 						var field_name = '';
