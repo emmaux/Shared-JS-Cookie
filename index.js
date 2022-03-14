@@ -158,22 +158,6 @@ const brand = 'CM';
 		};
 
 		/**
-		 * @function getMarinParams
-		 * @description Obtains all variables and their values with keys
-		 * @return {Object} All keys and values found
-		 */
-		this.getMarinParams = function (url) {
-			var vars = {};
-			var values = url.replace(
-				/[?&]+(mkwid)=([^&]*)/gi,
-				function (m, key, value) {
-					vars[key] = value;
-				}
-			);
-			return vars['mkwid'] || null;
-		};
-
-		/**
 		 * @function getQuerystringParamByName
 		 * @description Finds requested querystring and returns its value
 		 * @param {string} name - Name of querystring key
@@ -571,17 +555,6 @@ const brand = 'CM';
 							if (cmLastLandingUTMs.hasOwnProperty(param) && fields[i] !== null)
 								fields[i].value = encodeURIComponent(cmLastLandingUTMs[param]);
 						}
-					}
-
-					// Parse out Marin KW ID var from URLs and populate
-					var cmLandingMarin = $this.getMarinParams(CDE_data.landingPageURL);
-					var cmLastLandingMarin = $this.getMarinParams(
-						CDE_data.lastLandingPageURL
-					);
-					var marin_kwid = document.getElementsByName('Marin_KWID__c');
-					var mkwid = cmLandingMarin || cmLastLandingMarin || null;
-					if (marin_kwid.length === 1 && mkwid !== null) {
-						marin_kwid[0].value = encodeURIComponent(mkwid);
 					}
 				});
 			}
