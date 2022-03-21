@@ -626,4 +626,4 @@
 	};
 })();
 
-var CMG_TrkData = new TrkData(SITE_COOKIE_ID);
+var CMG_TrkData = new TrkData(COOKIE_BRAND_ID);
