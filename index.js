@@ -1,4 +1,3 @@
-const brand = 'CM';
 (function () {
 	/**
 	 * @function CMG_TrkData
@@ -533,9 +532,13 @@ const brand = 'CM';
 					// Parse out UTM vars from Landing URL and populate
 					var cmLandingUTMs = $this.getUTMParams(CDE_data.landingPageURL);
 					for (var param in cmLandingUTMs) {
-						var raw = param.replace('utm_', '');
+						// var raw = param.replace('utm_', '');
+						var rawArr = param.split('')
+						rawArr[4] = rawArr[4].toUpperCase()
+						var raw = [...rawArr.slice(0,4), 'u', 'T', 'M', ...rawArr.slice(4)].join('') + `${brand}`
 						var field_name = '';
 						field_name += raw;
+						console.log('field name: ' + raw)
 						var fields = document.getElementsByName(field_name);
 						for (var i = 0; i < fields.length; i++) {
 							if (cmLandingUTMs.hasOwnProperty(param) && fields[i] !== null)
@@ -546,10 +549,14 @@ const brand = 'CM';
 					// Parse out UTM vars from Last Landing URL and populate
 					var cmLastLandingUTMs = $this.getUTMParams(CDE_data.lastLandingPageURL);
 					for (var param in cmLastLandingUTMs) {
-						var raw = param.replace('utm_', '');
+						// var raw = param.replace('utm_', '');
+						var rawArr = param.split('')
+						rawArr[4] = rawArr[4].toUpperCase()
+						var raw = [...rawArr.slice(0,4), 'u', 'T', 'M', ...rawArr.slice(4)].join('') + `${brand}`
 						var field_name = '';
 						if (raw !== 'gclid') field_name = 'last';
-						field_name += raw.charAt(0).toUpperCase() + raw.slice(1);
+						field_name += raw;
+						console.log('last field name: ' + field_name)
 						var fields = document.getElementsByName(field_name);
 						for (var i = 0; i < fields.length; i++) {
 							if (cmLastLandingUTMs.hasOwnProperty(param) && fields[i] !== null)
@@ -619,4 +626,4 @@ const brand = 'CM';
 	};
 })();
 
-var CMG_TrkData = new TrkData(brand);
+var CMG_TrkData = new TrkData(SITE_COOKIE_ID);
