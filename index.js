@@ -535,7 +535,7 @@
 						// var raw = param.replace('utm_', '');
 						var rawArr = param.split('')
 						rawArr[4] = rawArr[4].toUpperCase()
-						var raw = [...rawArr.slice(0,4), 'u', 'T', 'M', ...rawArr.slice(4)].join('') + `${brand}`
+						var raw = ['uTM', ...rawArr.slice(4)].join('') + `${brand}`
 						var field_name = '';
 						field_name += raw;
 						console.log('field name: ' + raw)
@@ -552,7 +552,7 @@
 						// var raw = param.replace('utm_', '');
 						var rawArr = param.split('')
 						rawArr[4] = rawArr[4].toUpperCase()
-						var raw = [...rawArr.slice(0,4), 'u', 'T', 'M', ...rawArr.slice(4)].join('') + `${brand}`
+						var raw = ['UTM', ...rawArr.slice(4)].join('') + `${brand}`
 						var field_name = '';
 						if (raw !== 'gclid') field_name = 'last';
 						field_name += raw;
