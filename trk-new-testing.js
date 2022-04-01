@@ -568,7 +568,6 @@
 						var raw = ['uTM', ...rawArr.slice(4)].join('') + `${brand}`
 						var field_name = '';
 						field_name += raw;
-						console.log('field name: ' + raw)
 						var fields = document.getElementsByName(field_name);
 						for (var i = 0; i < fields.length; i++) {
 							if (cmLandingUTMs.hasOwnProperty(param) && fields[i] !== null)
@@ -586,7 +585,6 @@
 						var field_name = '';
 						if (raw !== 'gclid') field_name = 'last';
 						field_name += raw;
-						console.log('last field name: ' + field_name)
 						var fields = document.getElementsByName(field_name);
 						for (var i = 0; i < fields.length; i++) {
 							if (cmLastLandingUTMs.hasOwnProperty(param) && fields[i] !== null)
