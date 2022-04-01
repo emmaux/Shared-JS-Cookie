@@ -19,11 +19,11 @@
 		this.cookieDataPoints = [
       'firstVisit',
       'referralURL',
-			'lastReferralURL',
-			'landingPageURL',
-			'lastLandingPageURL',
+      'lastReferralURL',
+      'landingPageURL',
+      'lastLandingPageURL',
       'lastViewedURL',
-			'signupVar',
+      'signupVar',
 		];
 
 		/**
