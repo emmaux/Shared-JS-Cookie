@@ -18,7 +18,7 @@
 		 */
 		this.cookieDataPoints = [
       'firstVisit',
-			'referralURL',
+      'referralURL',
 			'lastReferralURL',
 			'landingPageURL',
 			'lastLandingPageURL',
