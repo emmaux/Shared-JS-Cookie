@@ -17,10 +17,12 @@
 		 * @member {Array}
 		 */
 		this.cookieDataPoints = [
+      'firstVisit',
 			'referralURL',
 			'lastReferralURL',
 			'landingPageURL',
 			'lastLandingPageURL',
+      'lastViewedURL',
 			'signupVar',
 		];
 
@@ -58,6 +60,18 @@
 		 * Data Points
 		 */
 
+    /**
+     * @function DPfirstVisit
+     * @description Defines the date of the users first visit to the website. If the value already exists, function returns the existing value.
+     * @return {string} GMT Date string of the date and time the user first visits the website
+     */
+    this.DPfirstVisit = function() {
+      if (!this.cookieData.hasOwnProperty('firstVisit')) {
+          var firstVisit = new Date;
+          return firstVisit.toGMTString();
+      } else return this.cookieData.firstVisit;
+    };
+
 		/**
 		 * @function DPreferralURL
 		 * @description Defines the referrer URL of the users first visit to the website. If the value already exists, function returns the existing value.
@@ -85,6 +99,15 @@
 				return document.referrer;
 			else return this.cookieData.lastReferralURL;
 		};
+
+    /**
+     * @function DPlastViewedURL
+     * @description Defines the last viewed page the user saw on the website.
+     * @return {url} URL of the referring webpage
+     */
+     this.DPlastViewedURL = function() {
+      return document.referrer;
+    };
 
 		/**
 		 * @function DPlandingPageURL
@@ -528,6 +551,13 @@
 								CDE_data.lastLandingPageURL
 							);
 					}
+
+          // lastViewedURL
+          var last_viewed_urls = document.getElementsByName('Last_Viewed_Page_URL__c');
+          for (var i=0;i<last_viewed_urls.length;i++) {
+            if (last_viewed_urls[i] != null)
+              last_viewed_urls[i].value = encodeURIComponent(CDE_data.lastViewedURL);
+          }
 
 					// Parse out UTM vars from Landing URL and populate
 					var cmLandingUTMs = $this.getUTMParams(CDE_data.landingPageURL);
